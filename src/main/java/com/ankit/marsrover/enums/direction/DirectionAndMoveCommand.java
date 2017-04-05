@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ankit.marsrover.direction;
+package com.ankit.marsrover.enums.direction;
 
 /**
  * @author ankit

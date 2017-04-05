@@ -2,7 +2,7 @@ package com.ankit.marsrover.dto;
 
 import java.util.List;
 
-import com.ankit.marsrover.direction.DirectionAndMoveCommand;
+import com.ankit.marsrover.enums.direction.DirectionAndMoveCommand;
 
 public class RoverInput {
 	
