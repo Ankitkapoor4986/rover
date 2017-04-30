@@ -17,10 +17,26 @@ public class Coordinates  {
 		return y;
 	}
 
+	
 	public void setY(int y) {
 		
 		this.y = y;
 	}
+	
+
+	public void incrementX(){
+		this.x++;
+	}
+	
+	public void incrementY(){
+		this.y++;
+	}
+	
+	public void decrementY() {
+		this.y--;
+		
+	}
+
 	
 	@Override
 	public int hashCode() {
@@ -45,6 +61,13 @@ public class Coordinates  {
 		if (y != other.y)
 			return false;
 		return true;
+	}
+
+	
+
+	public void decrementX() {
+		this.x--;
+		
 	}
 
 	

@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 import com.ankit.marsrover.dto.Coordinates;
 import com.ankit.marsrover.dto.Input;
 import com.ankit.marsrover.dto.Position;
-import com.ankit.marsrover.dto.RoverInput;
+import com.ankit.marsrover.dto.Rover;
 import com.ankit.marsrover.enums.direction.CardinalDirection;
 import com.ankit.marsrover.enums.direction.DirectionAndMoveCommand;
 
@@ -20,11 +21,12 @@ public class CalculatorTest {
 
 	}
 	
+	@Test
 	public void shouldReturnListOfPositionAsOutput(){
 		Input input=new Input();
 		input.setCoordinates(getUpperRightCoordinates());
-		RoverInput firstRover = getFirstRover();
-		List<RoverInput> roverInputs=new ArrayList<>();
+		Rover firstRover = getFirstRover();
+		List<Rover> roverInputs=new ArrayList<>();
 		roverInputs.add(firstRover);
 		input.setRoverInputs(roverInputs);
 		
@@ -41,7 +43,8 @@ public class CalculatorTest {
 
 	private Position getFirstOutPutPosition() {
 		Position firstexpectedOutPutPosition=new Position();
-		firstexpectedOutPutPosition.setCardinalDirection(CardinalDirection.N);
+	
+		firstexpectedOutPutPosition.setCardinalDirection(CardinalDirection.NORTH);
 		Coordinates firstOutputCoordinates=getFirstOutPutCoordinates();
 		firstexpectedOutPutPosition.setCoordinates(firstOutputCoordinates);
 		return firstexpectedOutPutPosition;
@@ -54,10 +57,10 @@ public class CalculatorTest {
 		return firstOutputCoordinates;		
 	}
 
-	private RoverInput getFirstRover() {
-		RoverInput firstRover=new RoverInput();
+	private Rover getFirstRover() {
+		Rover firstRover=new Rover();
 		Position firstStartingPosition = getFirstRoverStartingPosition();
-		firstRover.setStartingPosition(firstStartingPosition);
+		firstRover.setPosition(firstStartingPosition);
 		
 		List<DirectionAndMoveCommand> directionAndMoveCommands=getDirectionAndMoveCommandsForFirstRover();
 		firstRover.setDirectionAndMoveCommands(directionAndMoveCommands);
@@ -67,17 +70,17 @@ public class CalculatorTest {
 	private List<DirectionAndMoveCommand> getDirectionAndMoveCommandsForFirstRover() {
 		List<DirectionAndMoveCommand> directionAndMoveCommands=new ArrayList<>();
 		for (int iteration = 0; iteration <= 3; iteration++) {
-			directionAndMoveCommands.add(DirectionAndMoveCommand.L);
-			directionAndMoveCommands.add(DirectionAndMoveCommand.M);
+			directionAndMoveCommands.add(DirectionAndMoveCommand.LEFT);
+			directionAndMoveCommands.add(DirectionAndMoveCommand.MOVE);
 		}
-		directionAndMoveCommands.add(DirectionAndMoveCommand.M);
+		directionAndMoveCommands.add(DirectionAndMoveCommand.MOVE);
 		
 		return directionAndMoveCommands;
 	}
 
 	private Position getFirstRoverStartingPosition() {
 		Position firstStartingPosition = new Position();
-		firstStartingPosition.setCardinalDirection(CardinalDirection.N);
+		firstStartingPosition.setCardinalDirection(CardinalDirection.NORTH);
 		Coordinates firstRoverStartingCoordinater = new Coordinates();
 		firstRoverStartingCoordinater.setX(1);
 		firstRoverStartingCoordinater.setY(2);

@@ -8,5 +8,13 @@ package com.ankit.marsrover.enums.direction;
  *
  */
 public enum DirectionAndMoveCommand {
-	L, R,M;
+	LEFT("L"), RIGHT("R"),MOVE("M");
+	
+	private String value;
+
+	private DirectionAndMoveCommand(String value) {
+		this.value = value;
+	}
+	
+	
 }

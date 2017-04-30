@@ -4,19 +4,19 @@ import java.util.List;
 
 import com.ankit.marsrover.enums.direction.DirectionAndMoveCommand;
 
-public class RoverInput {
+public class Rover {
 	
-	private Position startingPosition;
+	private Position position;
 	private List<DirectionAndMoveCommand> directionAndMoveCommands;
-
+	
 	
 
-	public Position getStartingPosition() {
-		return startingPosition;
+	public Position getPosition() {
+		return position;
 	}
 
-	public void setStartingPosition(Position startingPosition) {
-		this.startingPosition = startingPosition;
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public List<DirectionAndMoveCommand> getDirectionAndMoveCommands() {
@@ -26,5 +26,7 @@ public class RoverInput {
 	public void setDirectionAndMoveCommands(List<DirectionAndMoveCommand> directionAndMoveCommands) {
 		this.directionAndMoveCommands = directionAndMoveCommands;
 	}
+
+	
 
 }
