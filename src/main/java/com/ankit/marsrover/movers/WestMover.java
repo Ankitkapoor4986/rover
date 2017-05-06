@@ -1,4 +1,4 @@
-package com.ankit.marsrover.manupilaators;
+package com.ankit.marsrover.movers;
 
 import com.ankit.marsrover.dto.Coordinates;
 

@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ankit.marsrover.enums.direction.CardinalDirection;
-import com.ankit.marsrover.manupilaators.EastMover;
-import com.ankit.marsrover.manupilaators.Mover;
-import com.ankit.marsrover.manupilaators.NorthMover;
-import com.ankit.marsrover.manupilaators.SouthMover;
-import com.ankit.marsrover.manupilaators.WestMover;
+import com.ankit.marsrover.movers.EastMover;
+import com.ankit.marsrover.movers.Mover;
+import com.ankit.marsrover.movers.NorthMover;
+import com.ankit.marsrover.movers.SouthMover;
+import com.ankit.marsrover.movers.WestMover;
 
 /**
  * @author ankit
