@@ -5,13 +5,10 @@ package com.ankit.marsrover.dto;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import com.ankit.marsrover.enums.direction.CardinalDirection;
-import com.ankit.marsrover.movers.EastMover;
-import com.ankit.marsrover.movers.Mover;
-import com.ankit.marsrover.movers.NorthMover;
-import com.ankit.marsrover.movers.SouthMover;
-import com.ankit.marsrover.movers.WestMover;
+
 
 /**
  * @author ankit
@@ -26,7 +23,7 @@ public class Position {
 	private static Map<CardinalDirection, CardinalDirection> turnRightMap = new HashMap<>(
 			4);
 	
-	private static Map<CardinalDirection,Mover> moversMap=new HashMap<>();
+	private static Map<CardinalDirection,Consumer<Coordinates>> moversMap=new HashMap<>();
 	static{
 		turnLeftMap.put(CardinalDirection.NORTH, CardinalDirection.WEST);
 		turnLeftMap.put(CardinalDirection.WEST, CardinalDirection.SOUTH);
@@ -38,10 +35,10 @@ public class Position {
 		turnRightMap.put(CardinalDirection.SOUTH, CardinalDirection.WEST);
 		turnRightMap.put(CardinalDirection.EAST, CardinalDirection.SOUTH);
 		
-		moversMap.put(CardinalDirection.NORTH, new NorthMover());
-		moversMap.put(CardinalDirection.EAST, new EastMover());
-		moversMap.put(CardinalDirection.WEST, new WestMover());
-		moversMap.put(CardinalDirection.SOUTH, new SouthMover());
+		moversMap.put(CardinalDirection.NORTH,(coordinates)->coordinates.incrementY());
+		moversMap.put(CardinalDirection.EAST, (coordinates)->coordinates.incrementX());
+		moversMap.put(CardinalDirection.WEST, (coordinates)->coordinates.decrementX());
+		moversMap.put(CardinalDirection.SOUTH, (coordinates)->coordinates.decrementY());
 		
 		
 	}
@@ -59,8 +56,8 @@ public class Position {
 	}
 	
 	public void move() {
-		Mover mover = moversMap.get(this.cardinalDirection);
-		mover.move(coordinates);
+	 moversMap.get(this.cardinalDirection).accept(coordinates);
+	
 	}
 
 	public CardinalDirection getCardinalDirection() {

@@ -11,7 +11,7 @@ import com.ankit.marsrover.dto.Input;
 import com.ankit.marsrover.dto.Position;
 import com.ankit.marsrover.dto.Rover;
 import com.ankit.marsrover.enums.direction.CardinalDirection;
-import com.ankit.marsrover.enums.direction.DirectionAndMoveCommand;
+import com.ankit.marsrover.enums.direction.Command;
 
 public class CalculatorTest {
 
@@ -62,18 +62,18 @@ public class CalculatorTest {
 		Position firstStartingPosition = getFirstRoverStartingPosition();
 		firstRover.setPosition(firstStartingPosition);
 		
-		List<DirectionAndMoveCommand> directionAndMoveCommands=getDirectionAndMoveCommandsForFirstRover();
+		List<Command> directionAndMoveCommands=getDirectionAndMoveCommandsForFirstRover();
 		firstRover.setDirectionAndMoveCommands(directionAndMoveCommands);
 		return firstRover;
 	}
 
-	private List<DirectionAndMoveCommand> getDirectionAndMoveCommandsForFirstRover() {
-		List<DirectionAndMoveCommand> directionAndMoveCommands=new ArrayList<>();
+	private List<Command> getDirectionAndMoveCommandsForFirstRover() {
+		List<Command> directionAndMoveCommands=new ArrayList<>();
 		for (int iteration = 0; iteration <= 3; iteration++) {
-			directionAndMoveCommands.add(DirectionAndMoveCommand.LEFT);
-			directionAndMoveCommands.add(DirectionAndMoveCommand.MOVE);
+			directionAndMoveCommands.add(Command.LEFT);
+			directionAndMoveCommands.add(Command.MOVE);
 		}
-		directionAndMoveCommands.add(DirectionAndMoveCommand.MOVE);
+		directionAndMoveCommands.add(Command.MOVE);
 		
 		return directionAndMoveCommands;
 	}

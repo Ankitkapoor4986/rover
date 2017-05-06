@@ -2,12 +2,12 @@ package com.ankit.marsrover.dto;
 
 import java.util.List;
 
-import com.ankit.marsrover.enums.direction.DirectionAndMoveCommand;
+import com.ankit.marsrover.enums.direction.Command;
 
 public class Rover {
 	
 	private Position position;
-	private List<DirectionAndMoveCommand> directionAndMoveCommands;
+	private List<Command> directionAndMoveCommands;
 	
 	
 
@@ -19,11 +19,11 @@ public class Rover {
 		this.position = position;
 	}
 
-	public List<DirectionAndMoveCommand> getDirectionAndMoveCommands() {
+	public List<Command> getDirectionAndMoveCommands() {
 		return directionAndMoveCommands;
 	}
 
-	public void setDirectionAndMoveCommands(List<DirectionAndMoveCommand> directionAndMoveCommands) {
+	public void setDirectionAndMoveCommands(List<Command> directionAndMoveCommands) {
 		this.directionAndMoveCommands = directionAndMoveCommands;
 	}
 
