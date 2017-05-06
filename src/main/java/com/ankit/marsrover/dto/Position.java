@@ -7,6 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ankit.marsrover.enums.direction.CardinalDirection;
+import com.ankit.marsrover.manupilaators.EastMover;
+import com.ankit.marsrover.manupilaators.Mover;
+import com.ankit.marsrover.manupilaators.NorthMover;
+import com.ankit.marsrover.manupilaators.SouthMover;
+import com.ankit.marsrover.manupilaators.WestMover;
 
 /**
  * @author ankit
@@ -20,6 +25,8 @@ public class Position {
 			4);
 	private static Map<CardinalDirection, CardinalDirection> turnRightMap = new HashMap<>(
 			4);
+	
+	private static Map<CardinalDirection,Mover> moversMap=new HashMap<>();
 	static{
 		turnLeftMap.put(CardinalDirection.NORTH, CardinalDirection.WEST);
 		turnLeftMap.put(CardinalDirection.WEST, CardinalDirection.SOUTH);
@@ -30,6 +37,13 @@ public class Position {
 		turnRightMap.put(CardinalDirection.WEST, CardinalDirection.NORTH);
 		turnRightMap.put(CardinalDirection.SOUTH, CardinalDirection.WEST);
 		turnRightMap.put(CardinalDirection.EAST, CardinalDirection.SOUTH);
+		
+		moversMap.put(CardinalDirection.NORTH, new NorthMover());
+		moversMap.put(CardinalDirection.EAST, new EastMover());
+		moversMap.put(CardinalDirection.WEST, new WestMover());
+		moversMap.put(CardinalDirection.SOUTH, new SouthMover());
+		
+		
 	}
 
 	public void turnLeft() {
@@ -45,23 +59,8 @@ public class Position {
 	}
 	
 	public void move() {
-		Coordinates coordinates = getCoordinates();
-		switch (this.cardinalDirection) {
-		case NORTH:
-			coordinates.incrementY();
-			break;
-		case SOUTH:
-			coordinates.decrementY();
-			break;
-		case EAST:
-			coordinates.incrementX();
-			break;
-		case WEST:
-			coordinates.decrementX();
-			break;
-		default:
-			break;
-		}
+		Mover mover = moversMap.get(this.cardinalDirection);
+		mover.move(coordinates);
 	}
 
 	public CardinalDirection getCardinalDirection() {
